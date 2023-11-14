@@ -5,7 +5,7 @@ from pyrogram.types import CallbackQuery, Message
 from config import BANNED_USERS, MUSIC_BOT_NAME, adminlist, lyrical
 from strings import get_command
 from Romeo import app
-from Romeo.core.call import Yukki
+from Romeo.core.call import Rj
 from Romeo.misc import db
 from Romeo.utils.database import get_authuser_names, get_cmode
 from Romeo.utils.decorators import (ActualAdminCB, AdminActual,
@@ -61,7 +61,7 @@ async def restartbot(client, message: Message, _):
     await asyncio.sleep(1)
     try:
         db[message.chat.id] = []
-        await Yukki.stop_stream(message.chat.id)
+        await Rj.stop_stream(message.chat.id)
     except:
         pass
     chat_id = await get_cmode(message.chat.id)
