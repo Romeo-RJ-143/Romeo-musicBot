@@ -4,7 +4,7 @@ from typing import Union
 from pyrogram.types import InlineKeyboardMarkup
 import config
 from Romeo import Carbon, YouTube, app
-from Romeo.core.call import Yukki
+from Romeo.core.call import Rj
 from Romeo.misc import db
 from Romeo.utils.database import (add_active_chat,
                                        add_active_video_chat,
@@ -38,7 +38,7 @@ async def stream(
         if not await is_video_allowed(chat_id):
             raise AssistantErr(_["play_7"])
     if forceplay:
-        await Yukki.force_stop_stream(chat_id)
+        await Rj.force_stop_stream(chat_id)
     if streamtype == "playlist":
         msg = f"{_['playlist_16']}\n\n"
         count = 0
@@ -87,7 +87,7 @@ async def stream(
                     )
                 except:
                     raise AssistantErr(_["play_16"])
-                await Yukki.join_call(
+                await Rj.join_call(
                     chat_id, original_chat_id, file_path, video=status
                 )
                 await put_queue(
