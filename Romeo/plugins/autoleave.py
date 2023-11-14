@@ -3,7 +3,7 @@ from datetime import datetime
 
 import config
 from Romeo import app
-from Romeo.core.call import Yukki, autoend
+from Romeo.core.call import Rj, autoend
 from Romeo.utils.database import (get_client, is_active_chat,
                                        is_autoend)
 
@@ -64,7 +64,7 @@ async def auto_end():
                     continue
                 autoend[chat_id] = {}
                 try:
-                    await Yukki.stop_stream(chat_id)
+                    await Rj.stop_stream(chat_id)
                 except:
                     continue
                 try:
