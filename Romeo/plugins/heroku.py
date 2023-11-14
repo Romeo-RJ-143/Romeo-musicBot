@@ -13,13 +13,13 @@ from git.exc import GitCommandError, InvalidGitRepositoryError
 from pyrogram import filters
 import config
 from strings import get_command
-from YukkiMusic import app
-from YukkiMusic.misc import HAPP, SUDOERS, XCB
-from YukkiMusic.utils.database import (get_active_chats,
+from Romeo import app
+from Romeo.misc import HAPP, SUDOERS, XCB
+from Romeo.utils.database import (get_active_chats,
                                        remove_active_chat,
                                        remove_active_video_chat)
-from YukkiMusic.utils.decorators.language import language
-from YukkiMusic.utils.pastebin import bin
+from Romeo.utils.decorators.language import language
+from Romeo.utils.pastebin import bin
 
 # Commands
 GETLOG_COMMAND = get_command("GETLOG_COMMAND")
@@ -58,7 +58,7 @@ async def log_(client, message, _):
                     NUMB = 100
                 for x in lines[-NUMB:]:
                     data += x
-                link = await Yukkibin(data)
+                link = await bin(data)
                 return await message.reply_text(link)
             else:
                 return await message.reply_text(_["heroku_2"])
@@ -254,7 +254,7 @@ async def update_(client, message, _):
     _update_response_ = "<b>A new update is available for the Bot!</b>\n\n➣ Pushing Updates Now</code>\n\n**<u>Updates:</u>**\n\n"
     _final_updates_ = _update_response_ + updates
     if len(_final_updates_) > 4096:
-        url = await Yukkibin(updates)
+        url = await bin(updates)
         nrs = await response.edit(
             f"<b>A new update is available for the Bot!</b>\n\n➣ Pushing Updates Now</code>\n\n**<u>Updates:</u>**\n\n[Click Here to checkout Updates]({url})"
         )
