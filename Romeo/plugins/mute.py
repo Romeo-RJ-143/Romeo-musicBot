@@ -4,7 +4,7 @@ from pyrogram.types import Message
 from config import BANNED_USERS
 from strings import get_command
 from Romeo import app
-from Romeo.core.call import Yukki
+from Romeo.core.call import Rj
 from Romeo.utils.database import is_muted, mute_on
 from Romeo.utils.decorators import AdminRightsCheck
 
@@ -24,7 +24,7 @@ async def mute_admin(cli, message: Message, _, chat_id):
     if await is_muted(chat_id):
         return await message.reply_text(_["admin_5"])
     await mute_on(chat_id)
-    await Yukki.mute_stream(chat_id)
+    await Rj.mute_stream(chat_id)
     await message.reply_text(
         _["admin_6"].format(message.from_user.mention)
     )
